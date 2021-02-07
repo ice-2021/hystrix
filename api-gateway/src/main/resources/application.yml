@@ -1,0 +1,16 @@
+server:
+  port: 8111
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+      - id: helloworld-ms1
+        uri: lb://helloworld-microservice1
+        predicates:
+        - Path=/helloworld1/**
+      - id: helloworld-ms2
+        uri: lb://helloworld-microservice2
+        predicates:
+        - Path=/helloworld2/**  
